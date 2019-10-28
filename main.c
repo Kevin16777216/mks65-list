@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include "LinkList.h"
 int main(void) {
-  struct node * list = malloc(sizeof(struct node));
-  list = NULL;
+  struct node * list = NULL;
 
   printf("Printing empty list:\n");
   print_list(list);

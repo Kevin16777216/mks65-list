@@ -1,11 +1,17 @@
+ifeq ($(DEBUG), yes)
+	CC = gcc -g
+else
+	CC = gcc
+endif
+
 all: main.o LinkList.o
-	gcc -o program main.o LinkList.o
+	$(CC) -o program main.o LinkList.o
 
 main.o: main.c LinkList.h
-	gcc -c main.c LinkList.h
+	$(CC) -c main.c LinkList.h
 
 LinkList.o: LinkList.c
-	gcc -c LinkList.c
+	$(CC) -c LinkList.c
 
 run: 
 	./program
@@ -13,3 +19,6 @@ run:
 clean:
 	rm *.o
 	rm *~
+
+memtest:
+	valgrind --leak-check=yes ./program
